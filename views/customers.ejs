@@ -1,0 +1,35 @@
+<%- include layouts/header.ejs %>
+<table class="table table-bordered">
+  <tr>
+    <th width="50px">Номер</th>
+    <th>Имя</th>
+    <th>Адрес</th>
+    <th>e-mail</th>
+    <th>Телефон</th>
+    <th>Действия</th>
+  </tr>
+  <% if (data.length) {
+  for(var i = 0; i < data.length; i++) { %>
+  <tr>
+    <td><%= (i + 1) %></td>
+    <td><%= data[i].name %></td>
+    <td><%= data[i].address %></td>
+    <td><%= data[i].email %></td>
+    <td><%= data[i].phone %></td>
+    <td>
+      <a href="../customers/edit/<%= data[i].id %>" class="btn btn-success" style="text-decoration: none; color: white;">Изменить</a>
+      <a href="../customers/delete/<%= data[i].id %>" class="btn btn-danger" style="text-decoration: none; color: #fff; ">Удалить</a>
+    </td>
+  </tr>
+  <% }
+  } else { %>
+  <tr>
+    <td colspan="6">No users</td>
+  </tr>
+  <% } %>
+</table>
+<div class="data-btn">
+  <button class="btn btn-default btn-sm col-md-1 col-md-offset-11" type="button" onClick="window.location.href= '/customers/add';">Добавить</button>
+</div>
+
+<%- include layouts/footer.ejs %>
